@@ -10,14 +10,14 @@ const ytdlHandler = async (req, res) => {
         const info = await ytdown(url);
         if (!info.status) return res.status(403).json({ message: "Video not found" });
 
-        const { contentType, fileExtension } = await getFileType(info.data.video);
+        // const { contentType, fileExtension } = await getFileType(info.data.video);
 
         const thumbnail = getThumbnail(url, "mq");
         const fileName = createUniqueFileName();
 
         const responseData = [{
-            contentType,
-            fileExtension,
+            contentType: 'video/mp4',
+            fileExtension: 'mp4',
             fileName,
             thumbnail,
             title: `${info.data.title.slice(0, 30)}...`,
