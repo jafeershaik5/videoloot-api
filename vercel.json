@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/ytdl", "destination": "/api/ytdl" },
+    { "source": "/instadl", "destination": "/api/instadl" },
+    { "source": "/fbdl", "destination": "/api/fbdl" },
+    { "source": "/xdl", "destination": "/api/xdl" }
+  ]
+}
