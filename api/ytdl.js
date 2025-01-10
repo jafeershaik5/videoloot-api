@@ -11,6 +11,7 @@ const ytdlHandler = async (req, res) => {
         if (!info.status) return res.status(403).json({ message: "Video not found" });
 
         const { contentType, fileExtension } = await getFileType(info.data.video);
+
         const thumbnail = getThumbnail(url, "mq");
         const fileName = createUniqueFileName();
 

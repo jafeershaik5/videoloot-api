@@ -23,9 +23,19 @@ const getFileType = async (mediaUrl) => {
         const { fileTypeFromStream } = await import('file-type');
         const stream = got.stream(mediaUrl);
         const fileTypeInfo = await fileTypeFromStream(stream);
+
         if (fileTypeInfo) {
             contentType = fileTypeInfo.mime;
             fileExtension = fileTypeInfo.ext;
+        } else {
+            // Fallback logic
+            if (mediaUrl.includes('.mp4')) {
+                contentType = 'video/mp4';
+                fileExtension = 'mp4';
+            } else if (mediaUrl.includes('.mp3')) {
+                contentType = 'audio/mpeg';
+                fileExtension = 'mp3';
+            }
         }
     } catch (error) {
         console.warn("Error fetching file data:", error);
